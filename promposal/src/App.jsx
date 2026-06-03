@@ -711,7 +711,13 @@ const TIMELINE_ITEMS = [
 ];
 
 function GameThree({ onWin }) {
-  const [list, setList] = useState(TIMELINE_ITEMS);
+  const [list, setList] = useState([
+  TIMELINE_ITEMS[3], // NYC
+  TIMELINE_ITEMS[0], // Froyo
+  TIMELINE_ITEMS[4], // Six Flags
+  TIMELINE_ITEMS[1], // Thai
+  TIMELINE_ITEMS[2], // Nando's
+]);
   const [success, setSuccess] = useState(false);
   const [showFroyo, setShowFroyo] = useState(false);
 
