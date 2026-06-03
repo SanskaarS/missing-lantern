@@ -401,11 +401,11 @@ const Q1 = [
   },
   {
     q: "Be entirely transparent in this cross-examination… What is your absolute favorite thing about me?",
-    options: ["Your smile 😊", "Your hair ✨", "Your glasses 🤓", "Everything about you — no question 🥹"],
+    options: ["Your smile ", "Your hair ", "Your glasses ", "Everything about me"],
     correct: 3, jokeMode: false
   },
   {
-    q: "During our late-night library sessions when we first started talking — what subject were we up until 3am with me helping you?",
+    q: "During our late-night study sessions when we first started talking, what subject were we up until 3am with me helping you?",
     options: ["Organic Chemistry", "Multivariable Calculus", "Statistics", "Data Structures"],
     correct: 2, jokeMode: false
   },
@@ -413,16 +413,16 @@ const Q1 = [
     q: "Critical intel needed. How much can I bench press?",
     options: ["100 lbs", "115 lbs", "135 lbs", "175 lbs"],
     correct: -1, jokeMode: true,
-    jokeMessage: "😂 None of those are right. Guess you'll have to come to the gym with me to find out. Field trip required."
+    jokeMessage: "None of those are right. Guess you'll have to stop fading the gym and actually come with me!"
   },
   {
-    q: "What annoys you the MOST?",
-    options: ["When I text \"ok\" 😑", "When I take a FaceTime photo 📸", "Nothing — you're basically perfect 🤷"],
+    q: "What annoys you the MOST about me?",
+    options: ["When I text \"ok\" ", "When I take a FaceTime photo ", "Nothing — I am perfect "],
     correct: 2, jokeMode: false
   },
   {
     q: "What nickname do I like the most for you?",
-    options: ["Shiv", "Shivali 😐", "Panda 🐼", "Chud"],
+    options: ["Shiv", "Bud ", "Panda ", "Chud"],
     correct: 2, jokeMode: false
   }
 ];
