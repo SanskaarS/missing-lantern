@@ -131,7 +131,7 @@ const LOCATIONS = [
     address: "9 Van Doren St, Plainsboro Township, NJ 08536",
     lat: 40.3329,
     lng: -74.5803,
-    radiusFeet: 200,
+    radiusFeet: 5000,
     backupCode: "LIBRARY2026",
     story: "Witnesses report the lantern was last seen shortly after a late-night investigation. Investigators believe this clue is connected to where the wish first began.",
     evidence: "The wish did not appear overnight. It began with a conversation."
@@ -142,7 +142,7 @@ const LOCATIONS = [
     address: "260 Nassau St, Princeton, NJ 08542",
     lat: 40.3505,
     lng: -74.6595,
-    radiusFeet: 150,
+    radiusFeet: 5000,
     backupCode: "THAI2026",
     story: "Investigators discovered evidence suggesting the wish continued to grow during several food-related encounters. Reconstruct the scrambled evidence photos to secure the next lead.",
     evidence: "The wish continued to grow. The lantern next appeared near a familiar dessert location."
@@ -153,7 +153,7 @@ const LOCATIONS = [
     address: "166 Nassau St, Princeton, NJ 08542",
     lat: 40.3491,
     lng: -74.6572,
-    radiusFeet: 150,
+    radiusFeet: 5000,
     backupCode: "FROYO2026",
     story: "Investigators have uncovered a major breakthrough. The lantern may not have been stolen at all. Arrange the structural timeline to unlock the final transmission.",
     evidence: "Investigation Update: The lantern was not stolen. It was intentionally hidden until its wish was ready to be revealed."
@@ -164,7 +164,7 @@ const LOCATIONS = [
     address: "Carnegie Lake, Princeton, NJ",
     lat: 40.3392,
     lng: -74.6421,
-    radiusFeet: 200,
+    radiusFeet: 20000,
     backupCode: "WISH2026",
     story: "Case Status: Lantern Located. Detective, your investigation is complete. Follow the lanterns to discover the wish.",
     evidence: "The lantern was hidden because its wish was not yet ready. Every piece of evidence pointed toward the same conclusion — the wish was formed through countless shared memories."
@@ -416,7 +416,7 @@ const Q1 = [
     jokeMessage: "😂 None of those are right. Guess you'll have to come to the gym with me to find out. Field trip required."
   },
   {
-    q: "What annoys you the MOST when we text?",
+    q: "What annoys you the MOST?",
     options: ["When I text \"ok\" 😑", "When I take a FaceTime photo 📸", "Nothing — you're basically perfect 🤷"],
     correct: 2, jokeMode: false
   },
@@ -561,12 +561,23 @@ function PuzzleTile({ src, tileVal, pos, isSelected, isSolved, TW, TH, paletteId
 
   // Load the real image if provided
   useEffect(() => {
-    if (!src) return;
-    const img = new Image();
-    img.onload = () => { imgRef.current = img; setImgReady(true); };
-    img.onerror = () => setImgReady(false);
-    img.src = src;
-  }, [src]);
+  setImgReady(false); // force redraw for new image
+
+  if (!src) return;
+
+  const img = new Image();
+
+  img.onload = () => {
+    imgRef.current = img;
+    setImgReady(true);
+  };
+
+  img.onerror = () => {
+    setImgReady(false);
+  };
+
+  img.src = src;
+}, [src]);
 
   const border = isSolved
     ? "2px solid var(--green)"
@@ -655,7 +666,7 @@ function GameTwo({ onWin }) {
         }}>
           {tiles.map((tileVal, pos) => (
             <PuzzleTile
-              key={pos}
+              key={`${photoIdx}-${pos}`}
               src={photoSrc}
               tileVal={tileVal}
               pos={pos}
